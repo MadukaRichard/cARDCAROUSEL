@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/36ca63db73.js" crossorigin="anonymous"></script>
+    <title>Business ID Card</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .full-container {
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            gap: 2em;
+            margin-top: 2em;
+        }
+        #container {
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(130deg, rgba(135, 206, 250), rgba(173, 216, 230, 0.6));
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+            padding: 2em;
+            text-align: center;
+        }
+        #profile-div {
+            border-radius: 100%;
+            width: 12em;
+            height: 12em;
+            background-color: white;
+            margin: auto;
+            overflow: hidden;
+        }
+        #profile-div img {
+            border-radius: 100%;
+            width: 12em;
+            height: 12em;
+        }
+        button {
+            border: 0;
+            background-color: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            margin: auto;
+        }
+        h2, h3, p {
+            margin: auto;
+            padding: .9em 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Business ID Card</h1>
+    <div class="full-container">
+        <button onclick="prev()"><i class="fa-solid fa-chevron-left"></i></button> 
+        <div id="container">
+            <div id="profile-div">
+                <img id="profile-pic" src="" alt="Profile Picture">
+            </div>
+            <h2 id="name">Name:</h2>
+            <h3 id="role">Role:</h3>
+            <p id="school">School:</p>
+            <p id="matric">Matric Number:</p>
+            <p id="id-number">ID Number:</p>
+        </div>
+        <button onclick="next()"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+</body>
+<script>
+const profiles = [
+  {
+    name: "Alice Cake",
+    role: "Software Engineer",
+    school: "SQI ICT",
+    matricNumber: "MIT12345",
+    idNumber: "ID001",
+    image: "https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+  {
+    name: "Mary Jane",
+    role: "Product Manager",
+    school: "SQI ICT",
+    matricNumber: "HARV9876",
+    idNumber: "ID002",
+    image: "https://images.pexels.com/photos/157661/young-woman-shooting-model-157661.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+  {
+    name: "Rosabel Alice",
+    role: "UI/UX Designer",
+    school: " SQI ICT",
+    matricNumber: "STAN4567",
+    idNumber: "ID003",
+    image: "https://images.pexels.com/photos/29534014/pexels-photo-29534014/free-photo-of-elegant-portrait-of-a-woman-with-braided-hair.jpeg?auto=compress&cs=tinysrgb&w=600://images.pexels.com/photos/60712/fashion-girl-sexy-women-60712.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+];
+
+
+let currentIndex = 0;
+const profilePic = document.getElementById("profile-pic");
+const nameElement = document.getElementById("name");
+const roleElement = document.getElementById("role");
+const schoolElement = document.getElementById("school");
+const matricElement = document.getElementById("matric");
+const idNumberElement = document.getElementById("id-number");
+
+
+function showProfile(index) {
+  const profile = profiles[index];
+  profilePic.src = profile.image;
+  nameElement.textContent = `Name: ${profile.name}`;
+  roleElement.textContent = `Role: ${profile.role}`;
+  schoolElement.textContent = `School: ${profile.school}`;
+  matricElement.textContent = `Matric Number: ${profile.matricNumber}`;
+  idNumberElement.textContent = `ID Number: ${profile.idNumber}`;
+}
+
+showProfile(currentIndex);
+
+function prev() {
+  currentIndex = (currentIndex - 1 + profiles.length) % profiles.length;
+  showProfile(currentIndex);
+}
+
+function next() {
+  currentIndex = (currentIndex + 1) % profiles.length;
+  showProfile(currentIndex);
+}
+
+</script>
+</html>
